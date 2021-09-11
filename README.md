@@ -3,62 +3,62 @@
 
 # Topology
 ```
-**********************************************************************************************************
-*                                                                                                        *
-* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx *
-* x                                                                                                    x *
-* x       xxxxxxxxxxxxxxxxxx                xxxxxxxxxxxxxxxxxx              xxxxxxxxxxxxxxxxxx         x *
-* x       x                x                x                x              x                x         x *
-* x       x     SERVER3    x                x     SERVER4    x              x     SERVER5    x         x *
-* x       x  CONSUL-server x                x  CONSUL-server x              x  CONSUL-server x         x *
-* x       x    container   x                x    container   x              x    container   x         x *
-* x       xxxxxxxxxxxxxxxxxx                xxxxxxxxxxxxxxxxxx              xxxxxxxxxxxxxxxxxx         x *
-* x               |                                 |                                |                 x *
-* x               |---------------------------------|--------------------------------|-------------|   x *
-* x                                                 |                                              |   x *
-* x                                                 |                                              |   x *
-* x                                                 |                                              |   x *
-* x                                                 |                                              |   x *
-* x                        --------------------------------------------------                      |   x *
-* x                        |                                 |              |                      |   x *
-* x  xxxxxxxxxxxxxxxxxxxxxxxxxxx       xxxxxxxxxxxxxxxxxxxxxxxxxxx     xxxxxxxxxxxxxxxxxxxxxxxxx   |   x *
-* x  x                | CONSUL x       x                | CONSUL x     x CONSUL |              x   |   x *
-* x  x     SERVER0    | client x       x     SERVER1    | client x     x client |   SERVER2    x   |   x *
-* x  x  NOMAD-server  ---------x       x  NOMAD-server  ---------x     x--------- NOMAD-server x   |   x *
-* x  x   container             x       x   container             x     x           container   x   |   x *
-* x  xxxxxxxxxxxxxxxxxxxxxxxxxxx       xxxxxxxxxxxxxxxxxxxxxxxxxxx     xxxxxxxxxxxxxxxxxxxxxxxxx   |   x *
-* x                        +            +                                   +                      |   x *
-* x                        +            +                                   +                      |   x *
-* x                        +            +  ++++++++++++++++++++++++++++++++++                      |   x *
-* x                        +            +  +                                                       |   x *
-* x                        +        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                                |   x *
-* x                        +        x NOMAD  |           | CONSUL x--------------------------------|   x *
-* x                      ++++++++++-x client |           | client x                                    x *
-* x                                 x --------           |--------x             xxxxxxxxxxxxxxxxxxxxxxxx *
-* x                                 x           CLIENT0           x             x                      x *
-* x                                 x          container          x             x    DOCKER NETWORK    x *
-* x                                 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx             x MACVLAN network type x *
-* x                                                                             x                      x *
-* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx *
-*                                                                                           | L |        *
-*      .~~.   .~~.                                                                          | O |        *
-*     '. \ ' ' / .'                        88                     88.                       | G |        *
-*      .~ .~~~..~.                         88                         88                    | I |        *
-*     : .~.'~'.~. :               88   88  88,888,  88   88  ,88888, 88888  88   88         | C |        *
-*    ~ (   ) (   ) ~              88   88  88   88  88   88  88   88  88    88   88         | A |        *
-*   ( : '~'.~.'~' : )             88   88  88   88  88   88  88   88  88    88   88         | L |        *
-*    ~ .~ (   ) ~. ~              88   88  88   88  88   88  88   88  88    88   88         |   |        *
-*     (  : '~' :  )               '88888'  '88888'  '88888'  88   88  '8888 '88888'         | B |        *
-*      '~ .~~~. ~'                                                                          | R |        *
-*                                                                                           | I |        *
-*                      _                           _                                        | D |        *
-*      ___ ___ ___ ___| |_ ___ ___ ___ _ _     ___|_|                                       | G |        *
-*     |  _| .'|_ -| . | . | -_|  _|  _| | |   | . | |                                       | E |        *
-*     |_| |__,|___|  _|___|___|_| |_| |_  |   |  _|_|                                  xxxxxxxxxxxxxx    *
-*                 |_|                 |___|   |_|                                      x            x    *
-*                                                                                      x    ETH0    x    *
-*                                                                                      x            x    *
-**********************************************************************************************************
+******************************************************************************************************
+*                                                                                                    *
+* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx *
+* x                                                                                                x *
+* x       xxxxxxxxxxxxxxxxxx            xxxxxxxxxxxxxxxxxx              xxxxxxxxxxxxxxxxxx         x *
+* x       x                x            x                x              x                x         x *
+* x       x     SERVER3    x            x     SERVER4    x              x     SERVER5    x         x *
+* x       x  CONSUL-server x            x  CONSUL-server x              x  CONSUL-server x         x *
+* x       x    container   x            x    container   x              x    container   x         x *
+* x       xxxxxxxxxxxxxxxxxx            xxxxxxxxxxxxxxxxxx              xxxxxxxxxxxxxxxxxx         x *
+* x               |                             |                                |                 x *
+* x               |-----------------------------|--------------------------------|-------------|   x *
+* x                                             |                                              |   x *
+* x                                             |                                              |   x *
+* x                                             |                                              |   x *
+* x                                             |                                              |   x *
+* x                        ----------------------------------------------                      |   x *
+* x                        |                             |              |                      |   x *
+* x  xxxxxxxxxxxxxxxxxxxxxxxxxxx   xxxxxxxxxxxxxxxxxxxxxxxxxxx     xxxxxxxxxxxxxxxxxxxxxxxxx   |   x *
+* x  x                | CONSUL x   x                | CONSUL x     x CONSUL |              x   |   x *
+* x  x     SERVER0    | client x   x     SERVER1    | client x     x client |   SERVER2    x   |   x *
+* x  x  NOMAD-server  ---------x   x  NOMAD-server  ---------x     x--------- NOMAD-server x   |   x *
+* x  x   container             x   x   container             x     x           container   x   |   x *
+* x  xxxxxxxxxxxxxxxxxxxxxxxxxxx   xxxxxxxxxxxxxxxxxxxxxxxxxxx     xxxxxxxxxxxxxxxxxxxxxxxxx   |   x *
+* x                        +        +                                   +                      |   x *
+* x                        +        +                                   +                      |   x *
+* x                        +        +  ++++++++++++++++++++++++++++++++++                      |   x *
+* x                        +        +  +                                                       |   x *
+* x                        +        xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                            |   x *
+* x                        +        x NOMAD  |           | CONSUL x----------------------------|   x *
+* x                      ++++++++++-x client |           | client x                                x *
+* x                                 x --------           |--------x         xxxxxxxxxxxxxxxxxxxxxxxx *
+* x                                 x           CLIENT0           x         x                      x *
+* x                                 x          container          x         x    DOCKER NETWORK    x *
+* x                                 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx         x MACVLAN network type x *
+* x                                                                         x                      x *
+* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx *
+*                                                                                       | L |        *
+*      .~~.   .~~.                                                                      | O |        *
+*     '. \ ' ' / .'                        88                     88.                   | G |        *
+*      .~ .~~~..~.                         88                         88                | I |        *
+*     : .~.'~'.~. :               88   88  88,888,  88   88  ,88888, 88888  88   88     | C |        *
+*    ~ (   ) (   ) ~              88   88  88   88  88   88  88   88  88    88   88     | A |        *
+*   ( : '~'.~.'~' : )             88   88  88   88  88   88  88   88  88    88   88     | L |        *
+*    ~ .~ (   ) ~. ~              88   88  88   88  88   88  88   88  88    88   88     |   |        *
+*     (  : '~' :  )               '88888'  '88888'  '88888'  88   88  '8888 '88888'     | B |        *
+*      '~ .~~~. ~'                                                                      | R |        *
+*                                                                                       | I |        *
+*                      _                           _                                    | D |        *
+*      ___ ___ ___ ___| |_ ___ ___ ___ _ _     ___|_|                                   | G |        *
+*     |  _| .'|_ -| . | . | -_|  _|  _| | |   | . | |                                   | E |        *
+*     |_| |__,|___|  _|___|___|_| |_| |_  |   |  _|_|                              xxxxxxxxxxxxxx    *
+*                 |_|                 |___|   |_|                                  x            x    *
+*                                                                                  x    ETH0    x    *
+*                                                                                  x            x    *
+******************************************************************************************************
                                                                                             |   |
 *******************************************                                                 | P |
 *    .~~.   .~~.        |--------|--------*                                                 | H |
@@ -78,28 +78,28 @@
 *******************************************                           | C |
                                                                       | A |
                                                                       | B |
-                                                        _________________________________________
-                                                       / _____________________________________   \
-                                                      |                                           |
-                                                      | ||--------|--------|                  |   |
-                                                      | || CONSUL | NOMAD  |                  |   |
-                                                      | || client | client |                  |   |
-                                                      | ||--------|--------|                  |   |
-                                                      | |                                     |   |
-                                                      | |       OLD DELL LAPTOP               |   |
-                                                      | |              CAN RUN VMs/CONTAINERS |   |
-                                                      | |_____________________________________|   |
-                                                      |                                           |
-                                                       \__________________________________________/
-                                                            \_______________________________/
-                                                            __________________________________
-                                                            _-'    .-.-.-.-.-.-.-.  --- `-_
-                                                         _-'.-.-. .---.-.-.-.-.-.--.  .-.-.`-_
-                                                      _-'.-.-.-. .---.-.-.-.-.-.-`__`. .-.-.-.`-_
-                                                   _-'.-.-.-.-. .-----.-.-.-.-.-.-----. .-.-.-.-.`-_
-                                                _-'.-.-.-.-.-. .---.-. .-------.-.-.---. .---.-.-.-.`-_
-                                               :-------------------------------------------------------:
-                                               `---._.-------------------------------------------._.---'
+                                                    _________________________________________
+                                                   / _____________________________________   \
+                                                  |                                           |
+                                                  | ||--------|--------|                  |   |
+                                                  | || CONSUL | NOMAD  |                  |   |
+                                                  | || client | client |                  |   |
+                                                  | ||--------|--------|                  |   |
+                                                  | |                                     |   |
+                                                  | |       OLD DELL LAPTOP               |   |
+                                                  | |              CAN RUN VMs/CONTAINERS |   |
+                                                  | |_____________________________________|   |
+                                                  |                                           |
+                                                   \__________________________________________/
+                                                        \_______________________________/
+                                                        __________________________________
+                                                        _-'    .-.-.-.-.-.-.-.  --- `-_
+                                                     _-'.-.-. .---.-.-.-.-.-.--.  .-.-.`-_
+                                                  _-'.-.-.-. .---.-.-.-.-.-.-`__`. .-.-.-.`-_
+                                               _-'.-.-.-.-. .-----.-.-.-.-.-.-----. .-.-.-.-.`-_
+                                            _-'.-.-.-.-.-. .---.-. .-------.-.-.---. .---.-.-.-.`-_
+                                           :-------------------------------------------------------:
+                                          `---._.-------------------------------------------._.---'
 ```
 
 # How To Use
