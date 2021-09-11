@@ -3,81 +3,81 @@
 
 # Topology
 ```
-    **********************************************************************************************************************
-    *                                                                                                                    *
-    *   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx     *
-    *   x                                                                                                          x     *
-    *   x       xxxxxxxxxxxxxxxxxx                  xxxxxxxxxxxxxxxxxx                  xxxxxxxxxxxxxxxxxx         x     *
-    *   x       x                x                  x                x                  x                x         x     *
-    *   x       x     SERVER3    x                  x     SERVER4    x                  x     SERVER5    x         x     *
-    *   x       x  CONSUL-server x                  x  CONSUL-server x                  x  CONSUL-server x         x     *
-    *   x       x    container   x                  x    container   x                  x    container   x         x     *
-    *   x       xxxxxxxxxxxxxxxxxx                  xxxxxxxxxxxxxxxxxx                  xxxxxxxxxxxxxxxxxx         x     *
-    *   x               |                                   |                                    |                 x     *
-    *   x               |-----------------------------------|------------------------------------|-------------|   x     *
-    *   x                                                   |                                                  |   x     *
-    *   x                                                   |                                                  |   x     *
-    *   x                                                   |                                                  |   x     *
-    *   x                                                   |                                                  |   x     *
-    *   x                        --------------------------------------------------------                      |   x     *
-    *   x                        |                                   |                  |                      |   x     *
-    *   x  xxxxxxxxxxxxxxxxxxxxxxxxxxx         xxxxxxxxxxxxxxxxxxxxxxxxxxx         xxxxxxxxxxxxxxxxxxxxxxxxx   |   x     *
-    *   x  x                | CONSUL x         x                | CONSUL x         x CONSUL |              x   |   x     *
-    *   x  x     SERVER0    | client x         x     SERVER1    | client x         x client |   SERVER2    x   |   x     *
-    *   x  x  NOMAD-server  ---------x         x  NOMAD-server  ---------x         x--------- NOMAD-server x   |   x     *
-    *   x  x   container             x         x   container             x         x           container   x   |   x     *
-    *   x  xxxxxxxxxxxxxxxxxxxxxxxxxxx         xxxxxxxxxxxxxxxxxxxxxxxxxxx         xxxxxxxxxxxxxxxxxxxxxxxxx   |   x     *
-    *   x                        +              +                                       +                      |   x     *
-    *   x                        +              +                                       +                      |   x     *
-    *   x                        +              +  ++++++++++++++++++++++++++++++++++++++                      |   x     *
-    *   x                        +              +  +                                                           |   x     *
-    *   x                        +          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                                |   x     *
-    *   x                        +          x NOMAD  |               | CONSUL x--------------------------------|   x     *
-    *   x                        ++++++++++-x client |               | client x                                    x     *
-    *   x                                   x --------               |--------x             xxxxxxxxxxxxxxxxxxxxxxxx     *
-    *   x                                   x             CLIENT0             x             x                      x     *
-    *   x                                   x            container            x             x    DOCKER NETWORK    x     *
-    *   x                                   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx             x MACVLAN network type x     *
-    *   x                                                                                   x                      x     *
-    *   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx     *
-    *                                                                                                      | L |         *
-    *        .~~.   .~~.                                                                                   | O |         *
-    *       '. \ ' ' / .'                          88                         88                           | G |         *
-    *        .~ .~~~..~.                           88                         88                           | I |         *
-    *       : .~.'~'.~. :                 88   88  88,888,  88   88  ,88888, 88888  88   88                | C |         *
-    *      ~ (   ) (   ) ~                88   88  88   88  88   88  88   88  88    88   88                | A |         *
-    *     ( : '~'.~.'~' : )               88   88  88   88  88   88  88   88  88    88   88                | L |         *
-    *      ~ .~ (   ) ~. ~                88   88  88   88  88   88  88   88  88    88   88                |   |         *
-    *       (  : '~' :  )                 '88888'  '88888'  '88888'  88   88  '8888 '88888'                | B |         *
-    *        '~ .~~~. ~'                                                                                   | R |         *
-    *                                                                                                      | I |         *
-    *                   _                           _                                                      | D |         *
-    *   ___ ___ ___ ___| |_ ___ ___ ___ _ _     ___|_|                                                     | G |         *
-    *  |  _| .'|_ -| . | . | -_|  _|  _| | |   | . | |                                                     | E |         *
-    *  |_| |__,|___|  _|___|___|_| |_| |_  |   |  _|_|                                                xxxxxxxxxxxxxx     *
-    *              |_|                 |___|   |_|                                                    x            x     *
-    *                                                                                                 x    ETH0    x     *
-    *                                                                                                 x            x     *
-    **********************************************************************************************************************
-                                                                                                           |   |
-    *******************************************                                                            | P |
-    *    .~~.   .~~.        |--------|--------*                                                            | H |
-    *   '. \ ' ' / .'       | CONSUL | NOMAD  *           **********************************               | Y |
-    *    .~ .~~~..~.        | client | client *           *                  _             *               | S |
-    *   : .~.'~'.~. :       |--------|--------*           *   PHYSICAL      | |            *               | I |
-    *  ~ (   ) (   ) ~          _             *-----------*  _ __ ___  _   _| |_ ___ _ __  *               | C |
-    * ( : '~'.~.'~' : )     ___|_|            * ETH CABLE * | '__/ _ \| | | | __/ _ \ '__| *               | A |
-    *  ~ .~ (   ) ~. ~     | . | |            *-----------* | | | (_) | |_| | ||  __/ |    *---------------| L |
-    *   (  : '~' :  )      |  _|_|            *           * |_|  \___/ \__,_|\__\___|_|    * ETHERNET CABLE    |
-    *    '~ .~~~. ~'   _   |_|                *           *                                *--------------------
-    *  ___ ___ ___ ___| |_ ___ ___ ___ _ _    *           **********************************
-    * |  _| .'|_ -| . | . | -_|  _|  _| | |   *                           | E |
-    * |_| |__,|___|  _|___|___|_| |_| |_  |   *                           | T |
-    *             |_|                 |___|   *                           | H |
-    *                                         *                           |   |
-    *******************************************                           | C |
-                                                                          | A |
-                                                                          | B |
+****************************************************************************************************************
+*                                                                                                              *
+* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx *
+* x                                                                                                          x *
+* x       xxxxxxxxxxxxxxxxxx                  xxxxxxxxxxxxxxxxxx                  xxxxxxxxxxxxxxxxxx         x *
+* x       x                x                  x                x                  x                x         x *
+* x       x     SERVER3    x                  x     SERVER4    x                  x     SERVER5    x         x *
+* x       x  CONSUL-server x                  x  CONSUL-server x                  x  CONSUL-server x         x *
+* x       x    container   x                  x    container   x                  x    container   x         x *
+* x       xxxxxxxxxxxxxxxxxx                  xxxxxxxxxxxxxxxxxx                  xxxxxxxxxxxxxxxxxx         x *
+* x               |                                   |                                    |                 x *
+* x               |-----------------------------------|------------------------------------|-------------|   x *
+* x                                                   |                                                  |   x *
+* x                                                   |                                                  |   x *
+* x                                                   |                                                  |   x *
+* x                                                   |                                                  |   x *
+* x                        --------------------------------------------------------                      |   x *
+* x                        |                                   |                  |                      |   x *
+* x  xxxxxxxxxxxxxxxxxxxxxxxxxxx         xxxxxxxxxxxxxxxxxxxxxxxxxxx         xxxxxxxxxxxxxxxxxxxxxxxxx   |   x *
+* x  x                | CONSUL x         x                | CONSUL x         x CONSUL |              x   |   x *
+* x  x     SERVER0    | client x         x     SERVER1    | client x         x client |   SERVER2    x   |   x *
+* x  x  NOMAD-server  ---------x         x  NOMAD-server  ---------x         x--------- NOMAD-server x   |   x *
+* x  x   container             x         x   container             x         x           container   x   |   x *
+* x  xxxxxxxxxxxxxxxxxxxxxxxxxxx         xxxxxxxxxxxxxxxxxxxxxxxxxxx         xxxxxxxxxxxxxxxxxxxxxxxxx   |   x *
+* x                        +              +                                       +                      |   x *
+* x                        +              +                                       +                      |   x *
+* x                        +              +  ++++++++++++++++++++++++++++++++++++++                      |   x *
+* x                        +              +  +                                                           |   x *
+* x                        +          xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                                |   x *
+* x                        +          x NOMAD  |               | CONSUL x--------------------------------|   x *
+* x                        ++++++++++-x client |               | client x                                    x *
+* x                                   x --------               |--------x             xxxxxxxxxxxxxxxxxxxxxxxx *
+* x                                   x             CLIENT0             x             x                      x *
+* x                                   x            container            x             x    DOCKER NETWORK    x *
+* x                                   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx             x MACVLAN network type x *
+* x                                                                                   x                      x *
+* xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx *
+*                                                                                                 | L |        *
+*      .~~.   .~~.                                                                                | O |        *
+*     '. \ ' ' / .'                          88                         88.                       | G |        *
+*      .~ .~~~..~.                           88                         88                        | I |        *
+*     : .~.'~'.~. :                 88   88  88,888,  88   88  ,88888, 88888  88   88             | C |        *
+*    ~ (   ) (   ) ~                88   88  88   88  88   88  88   88  88    88   88             | A |        *
+*   ( : '~'.~.'~' : )               88   88  88   88  88   88  88   88  88    88   88             | L |        *
+*    ~ .~ (   ) ~. ~                88   88  88   88  88   88  88   88  88    88   88             |   |        *
+*     (  : '~' :  )                 '88888'  '88888'  '88888'  88   88  '8888 '88888'             | B |        *
+*      '~ .~~~. ~'                                                                                | R |        *
+*                                                                                                 | I |        *
+*                      _                           _                                              | D |        *
+*      ___ ___ ___ ___| |_ ___ ___ ___ _ _     ___|_|                                             | G |        *
+*     |  _| .'|_ -| . | . | -_|  _|  _| | |   | . | |                                             | E |        *
+*     |_| |__,|___|  _|___|___|_| |_| |_  |   |  _|_|                                        xxxxxxxxxxxxxx    *
+*                 |_|                 |___|   |_|                                            x            x    *
+*                                                                                            x    ETH0    x    *
+*                                                                                            x            x    *
+****************************************************************************************************************
+                                                                                                    |   |
+*******************************************                                                         | P |
+*    .~~.   .~~.        |--------|--------*                                                         | H |
+*   '. \ ' ' / .'       | CONSUL | NOMAD  *           **********************************            | Y |
+*    .~ .~~~..~.        | client | client *           *                  _             *            | S |
+*   : .~.'~'.~. :       |--------|--------*           *   PHYSICAL      | |            *            | I |
+*  ~ (   ) (   ) ~          _             *-----------*  _ __ ___  _   _| |_ ___ _ __  *            | C |
+* ( : '~'.~.'~' : )     ___|_|            * ETH CABLE * | '__/ _ \| | | | __/ _ \ '__| *            | A |
+*  ~ .~ (   ) ~. ~     | . | |            *-----------* | | | (_) | |_| | ||  __/ |    *            | L |
+*   (  : '~' :  )      |  _|_|            *           * |_|  \___/ \__,_|\__\___|_|    *-------------   |
+*    '~ .~~~. ~'   _   |_|                *           *                                * ETHERNET CABLE |
+*  ___ ___ ___ ___| |_ ___ ___ ___ _ _    *           **********************************-----------------
+* |  _| .'|_ -| . | . | -_|  _|  _| | |   *                           | E |
+* |_| |__,|___|  _|___|___|_| |_| |_  |   *                           | T |
+*             |_|                 |___|   *                           | H |
+*                                         *                           |   |
+*******************************************                           | C |
+                                                                      | A |
+                                                                      | B |
                                                         _________________________________________
                                                        / _____________________________________   \
                                                       |                                           |
