@@ -1,0 +1,98 @@
+version: "3"
+
+services:
+  server0:
+    build:
+      context: .
+      dockerfile: nomad.dockerfile
+    hostname: server0
+    volumes:
+      - ./data/server0/nomad:/etc/nomad.d
+      - ./data/server0/consul:/etc/consul.d
+    networks: 
+      net_hashi:
+        ipv4_address: 192.168.1.120
+
+  server1:
+    build:
+      context: .
+      dockerfile: nomad.dockerfile
+    hostname: server1
+    volumes:
+      - ./data/server1/nomad:/etc/nomad.d
+      - ./data/server1/consul:/etc/consul.d
+    networks: 
+      net_hashi:
+        ipv4_address: 192.168.1.121
+
+
+  server2:
+    build:
+      context: .
+      dockerfile: nomad.dockerfile
+    hostname: server2
+    volumes:
+      - ./data/server2/nomad:/etc/nomad.d
+      - ./data/server2/consul:/etc/consul.d
+    networks: 
+      net_hashi:
+        ipv4_address: 192.168.1.122
+
+
+  server3:
+    build:
+      context: .
+      dockerfile: consul.dockerfile
+    hostname: server3
+    volumes:
+      - ./data/server3/consul:/etc/consul.d
+    networks: 
+      net_hashi:
+        ipv4_address: 192.168.1.130
+
+  server4:
+    build:
+      context: .
+      dockerfile: consul.dockerfile
+    hostname: server4
+    volumes:
+      - ./data/server4/consul:/etc/consul.d
+    networks: 
+      net_hashi:
+        ipv4_address: 192.168.1.131
+
+  server5:
+    build:
+      context: .
+      dockerfile: consul.dockerfile
+    hostname: server5
+    volumes:
+      - ./data/server5/consul:/etc/consul.d
+    networks: 
+      net_hashi:
+        ipv4_address: 192.168.1.132
+
+  client0:
+    build:
+      context: .
+      dockerfile: nomad.dockerfile
+    hostname: client0
+    volumes: 
+      - ./data/server2/nomad:/etc/nomad.d
+      - ./data/server2/consul:/etc/consul.d
+    networks: 
+      net_hashi:
+        ipv4_address: 192.168.1.140
+
+
+networks:
+  net_hashi:
+    driver: macvlan
+    driver_opts:
+      parent: eth0
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.1.0/24
+          gateway: 192.168.1.1
+          # ip-range: 192.168.1.128/25
