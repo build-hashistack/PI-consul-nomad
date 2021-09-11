@@ -1,4 +1,4 @@
-# Nomad starter kit
+# Consul Nomad on Raspberry Pi
 *it's suggested that this will be used to test features, not to be used for production*
 
 # Topology
