@@ -11,7 +11,7 @@ RUN apt-get install -y tcpdump
 #########################
 ENV NOMAD_VERSION="1.1.4"
 ENV CONSUL_VERSION="1.10.2"
-ENV ARCH="arm64"
+ENV ARCH=$(dpkg --print-architecture)
 
 # Nomad download#
 #################
