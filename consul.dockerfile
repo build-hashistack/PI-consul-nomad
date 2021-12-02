@@ -20,7 +20,7 @@ RUN unzip consul_${CONSUL_VERSION}_linux_${ARCH}.zip
 
 RUN chown root:root consul
 RUN mv consul /usr/bin/
-RUN consul -autocomplete-install
+# RUN consul -autocomplete-install
 RUN mkdir --parents /opt/consul/
 RUN mkdir --parents /etc/consul.d/
 
