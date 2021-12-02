@@ -22,7 +22,7 @@ RUN unzip nomad_${NOMAD_VERSION}_linux_${ARCH}.zip
 ########################
 
 RUN mv nomad /usr/bin/
-RUN nomad --autocomplete-install
+# RUN nomad --autocomplete-install
 RUN mkdir --parents /opt/nomad
 RUN mkdir --parents /etc/nomad.d
 RUN chmod 700 /etc/nomad.d
@@ -40,7 +40,7 @@ RUN unzip consul_${CONSUL_VERSION}_linux_${ARCH}.zip
 
 RUN chown root:root consul
 RUN mv consul /usr/bin/
-RUN consul -autocomplete-install
+# RUN consul -autocomplete-install
 RUN mkdir --parents /opt/consul/
 RUN mkdir --parents /etc/consul.d/
 
